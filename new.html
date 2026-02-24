@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAGI X HUB | المركز الرئيسي</title>
+    <style>
+        :root {
+            --nagi-red: #ff0055;
+            --nagi-cyan: #00f7ff;
+            --bg-dark: #050508;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at center, #1a1a2e 0%, var(--bg-dark) 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* 1. شاشة تسجيل الدخول الأنيقة */
+        #login-screen {
+            position: fixed; inset: 0; background: var(--bg-dark);
+            z-index: 1000; display: flex; justify-content: center; align-items: center;
+        }
+
+        .login-card {
+            background: var(--glass); backdrop-filter: blur(15px);
+            padding: 40px; border-radius: 20px; border: 1px solid rgba(255,0,85,0.3);
+            text-align: center; width: 350px; box-shadow: 0 0 30px rgba(255,0,85,0.2);
+        }
+
+        .login-card h2 { color: var(--nagi-red); margin-bottom: 25px; letter-spacing: 3px; }
+
+        .login-card input {
+            width: 100%; padding: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.5);
+            border: 1px solid #333; color: var(--nagi-cyan); border-radius: 8px; outline: none;
+        }
+
+        .login-card button {
+            width: 100%; padding: 12px; background: var(--nagi-red); border: none;
+            color: white; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.3s;
+        }
+
+        .login-card button:hover { box-shadow: 0 0 20px var(--nagi-red); transform: scale(1.02); }
+
+        /* 2. الواجهة الرئيسية (الديزاين السابق القوي) */
+        #main-hub {
+            display: none; width: 90%; max-width: 1100px; padding: 40px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .header { text-align: center; margin-bottom: 50px; }
+        .header h1 { font-size: 3.5rem; color: var(--nagi-cyan); text-shadow: 0 0 20px var(--nagi-cyan); letter-spacing: 5px; }
+        .header p { color: var(--nagi-red); font-weight: bold; letter-spacing: 2px; }
+
+        /* شبكة الارتباطات التشعبية الضخمة */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .mega-link {
+            text-decoration: none; color: white;
+            background: var(--glass); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 35px 25px; border-radius: 20px;
+            text-align: center; transition: 0.4s all;
+            position: relative; overflow: hidden;
+        }
+
+        .mega-link::before {
+            content: ""; position: absolute; inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(0, 247, 255, 0.1));
+            opacity: 0; transition: 0.4s;
+        }
+
+        .mega-link:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--nagi-red);
+            box-shadow: 0 15px 35px rgba(255, 0, 85, 0.2);
+        }
+
+        .mega-link:hover::before { opacity: 1; }
+
+        .mega-link h3 { font-size: 1.5rem; color: var(--nagi-cyan); margin-bottom: 12px; }
+        .mega-link p { font-size: 0.85rem; color: #aaa; line-height: 1.5; }
+
+        /* توقيع ناجي في كل رابط */
+        .mega-link span {
+            display: block; margin-top: 15px; font-size: 10px;
+            color: var(--nagi-red); font-weight: bold; letter-spacing: 2px;
+        }
+
+        /* التوقيع السفلي */
+        .footer-sig {
+            margin-top: 60px; text-align: center;
+            color: rgba(255,255,255,0.2); font-size: 12px; letter-spacing: 5px;
+        }
+
+        .footer-sig b { color: var(--nagi-red); }
+    </style>
+</head>
+<body>
+
+    <div id="login-screen">
+        <div class="login-card">
+            <h2>NAGI_LOGIN</h2>
+            <input type="password" id="pass" placeholder="أدخل كلمة السر">
+            <button onclick="login()">دخول النظام</button>
+            <p id="err" style="color: red; font-size: 10px; margin-top: 10px; display: none;">خطأ في المفتاح!</p>
+        </div>
+    </div>
+
+    <div id="main-hub">
+        <div class="header">
+            <h1>NAGI X PRO</h1>
+            <p>ADVANCED SYSTEM GATEWAY</p>
+        </div>
+
+        <div class="links-grid">
+            
+            <a href="download.html" target="_blank" class="mega-link">
+                <h3>📥 تحميل الأدوات</h3>
+                <p>الوصول المباشر إلى ملفات البانل وتحديثات السيرفر.</p>
+                <span>DESIGNED BY NAGI</span>
+            </a>
+
+            <a href="store.html" target="_blank" class="mega-link">
+                <h3>💎 متجر الجواهر</h3>
+                <p>شحن آمن وفوري لجميع الحسابات بأسعار تنافسية.</p>
+                <span>DESIGNED BY NAGI</span>
+            </a>
+
+            <a href="status.html" target="_blank" class="mega-link">
+                <h3>📡 حالة السيرفر</h3>
+                <p>مراقبة حية لأنظمة الحماية وتجاوز الأنتيبان.</p>
+                <span>DESIGNED BY NAGI</span>
+            </a>
+
+            <a href="https://t.me/your_telegram" target="_blank" class="mega-link">
+                <h3>💬 الدعم الفني</h3>
+                <p>تواصل مع فريق التطوير للحصول على مساعدة تقنية.</p>
+                <span>DESIGNED BY NAGI</span>
+            </a>
+
+            <a href="vip-access.html" target="_blank" class="mega-link">
+                <h3>⭐ بوابة VIP</h3>
+                <p>مميزات حصرية وسكريبتات مدفوعة للمشتركين فقط.</p>
+                <span>DESIGNED BY NAGI</span>
+            </a>
+
+            <a href="news.html" target="_blank" class="mega-link">
+                <h3>📢 آخر الأخبار</h3>
+                <p>تابع آخر التحديثات والإضافات الجديدة في عالم ناجي.</p>
+                <span>DESIGNED BY NAGI</span>
+            </a>
+
+        </div>
+
+        <footer class="footer-sig">
+            ALL SYSTEMS PROTECTED BY <b>NAGI X PRO</b> &copy; 2024
+        </footer>
+    </div>
+
+    <script>
+        function login() {
+            const p = document.getElementById('pass').value;
+            if(p === "123") { // كلمة السر هي 123
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('main-hub').style.display = 'block';
+            } else {
+                document.getElementById('err').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
